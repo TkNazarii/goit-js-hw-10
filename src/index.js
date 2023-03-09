@@ -9,9 +9,11 @@ const input = document.querySelector('#search-box');
 const list = document.querySelector('.country-list');
 const cartInfo = document.querySelector('.country-info');
 
-// const item = document.querySelector('.country-item');
-// const img = document.querySelector('.country-img');
-// const item = document.querySelector('.country-item');
+const item = document.querySelector('.country-item');
+const img = document.querySelector('.country-img');
+const text = document.querySelector('.country-item');
+
+console.log(item);
 
 input.addEventListener('input', debounce(sendValue, DEBOUNCE_DELAY))
 
@@ -22,10 +24,12 @@ function choice(evt) {
 	if (evt.target.className === 'country-list') {
 		return;
 	}
-	
-	const textHTML = evt.target.innerHTML
-	// console.log(textHTML);
-	input.value = textHTML
+
+	const myLi = evt.target.closest('.country-item')
+	console.log(myLi);
+	const textItem = myLi.lastElementChild
+	const newValue = textItem.textContent;
+	input.value = newValue;
 	fetchThen(input.value)
 }
 
@@ -57,7 +61,6 @@ function sendValue(event) {
 
 			cartInfo.innerHTML = markap.join('')
 		}
-
 
 		function fetchThen(value) {
 		
