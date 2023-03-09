@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 const DEBOUNCE_DELAY = 300;
 const debounce = require('lodash.debounce');
 
-refs = {
+const refs = {
   input: document.querySelector('#search-box'),
   list: document.querySelector('.country-list'),
   cartInfo: document.querySelector('.country-info'),
